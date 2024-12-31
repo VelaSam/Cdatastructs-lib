@@ -3,19 +3,23 @@
 
 typedef struct tstack TSTACK;
 
-void init_stack(TSTACK *ts);
-
 struct tstack {
   struct tnode *top;
   int size;
 };
 
-int peek(TSTACK *ts);
+TSTACK *init_stack();
 
-void push(TSTACK *ts, int new_data);
+int peek(TSTACK *ts, int *output_data);
 
-int pop(TSTACK *ts);
+int push(TSTACK *ts, int new_data);
+
+int pop(TSTACK *ts, int *output_data);
 
 int is_empty(TSTACK *ts);
+
+int get_size(TSTACK *ts);
+
+int clear(TSTACK *ts);
 
 #endif
