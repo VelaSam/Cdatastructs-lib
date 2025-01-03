@@ -13,9 +13,10 @@ int test_number = 0;
 
 void assert_equals(char *file_name, int expected, int received) {
   if (expected == received) {
-    printf("%s %s: test number %d passed\n", KGRN, file_name, ++test_number);
+    printf("%s %s: test number %d passed %s\n", KGRN, file_name, ++test_number,
+           KNRM);
   } else {
-    printf("%s %s: test number %d failed - expected %d but received %d\n", KRED,
-           file_name, ++test_number, expected, received);
+    printf("%s %s: test number %d failed - expected %d but received %d %s\n",
+           KRED, file_name, ++test_number, expected, received, KNRM);
   }
 }

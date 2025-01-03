@@ -1,5 +1,5 @@
 #include "../includes/stack.h"
-#include <cstddef>
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct tnode TNODE;
@@ -41,8 +41,8 @@ int pop(TSTACK *ts, int *output_data) {
   int data = ts->top->data;
   TNODE *popper = ts->top;
   ts->top = ts->top->under;
+  output_data = &data;
   free(popper);
-  *output_data = data;
   ts->size--;
   return 0;
 }
@@ -66,9 +66,9 @@ int clear(TSTACK *ts) {
   if (ts->size == 0 || ts->size == -1) {
     return ts->size;
   }
-  int pop_return_value;
-  pop_return_value = pop(ts, NULL);
-  while (pop_return_value != 0) {
+  int pop_return_value, *buff;
+  pop_return_value = pop(ts, buff);
+  while (pop_return_value != -1) {
     pop_return_value = pop(ts, NULL);
   }
   return 0;
